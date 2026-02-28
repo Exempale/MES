@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MES — анонимный мессенджер</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <h1>MES <small>Message Encrypted Secure</small></h1>
+      </div>
+      <div class="status">
+        <span id="statusDot" class="dot"></span>
+        <span id="statusText" aria-live="polite">offline</span>
+        <span id="onlineCount" title="Людей сейчас в комнате">0</span>
+        <button id="themeToggle" class="iconBtn" title="Сменить тему" aria-label="Сменить тему">🌓</button>
+      </div>
+    </header>
+
+    <section class="room">
+      <div class="row wrap">
+        <div class="controls">
+          <button id="createRoom">Создать комнату</button>
+          <button id="copyInvite">Скопировать приглашение</button>
+          <button id="endChat" class="danger">Завершить чат</button>
+        </div>
+        <div class="identity">
+          <input id="nickname" placeholder="Ник (необязательно)" aria-label="Ваш ник"/>
+        </div>
+      </div>
+      <div class="row tips">
+        <span>Ключ и соль в ссылке <b>после #</b> (не отправляются на сервер). История хранится, пока чат не завершён.</span>
+      </div>
+    </section>
+
+    
+
+    <main id="chat" class="chat" aria-live="polite">
+      <div id="emptyState" class="empty">
+        <div class="empty-icon">💬</div>
+        <div class="empty-title">Добро пожаловать в MES</div>
+        <div class="empty-subtitle">Создайте комнату и поделитесь ссылкой, чтобы начать безопасный чат.</div>
+      </div>
+      <ul id="messages"></ul>
+    </main>
+    <div id="typingIndicator" class="typing" aria-live="polite" style="display:none"></div>
+
+    <footer class="input" role="form">
+      <div class="left">
+        <textarea id="input" rows="2" placeholder="Введите сообщение..." aria-label="Поле ввода сообщения"></textarea>
+        <div class="actions">
+          <label class="fileBtn">📎 
+            <input type="file" id="fileInput" multiple style="display:none"/>
+          </label>
+          <select id="voiceEffect" title="Эффект голоса">
+            <option value="none">Голос: без эффекта</option>
+            <option value="robot">Голос: робот</option>
+            <option value="chipmunk">Голос: высокий</option>
+            <option value="deep">Голос: низкий</option>
+          </select>
+          <button id="voiceBtn" title="Записать голосовое">🎙️</button>
+        </div>
+      </div>
+      <button id="send">Отправить</button>
+    </footer>
+  </div>
+
+  <script src="/static/mes.js"></script>
+</body>
+</html>
